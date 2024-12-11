@@ -1,6 +1,6 @@
 from shiny import App, ui, reactive, render
 import requests
-import shiny
+import urllib.parse
 
 import fbdatamodule
 
@@ -37,8 +37,9 @@ def server(input, output, session):
         def status():
             return 'Authenticating.'
 
-        code = (session.input['.clientdata_url_search']())
-        code = code.replace('?code=','')
+        #Read query string code from URL
+        query_string = session.input['.clientdata_url_search']()
+        code = urllib.parse.parse_qs(query_string)['?code'][0]
 
         if not code:
             @render.text
