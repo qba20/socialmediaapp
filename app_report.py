@@ -6,11 +6,9 @@ from shiny import App, render, ui, reactive
 
 import fbdatamodule
 
-
 def load_json_data(file_path):
-    """
-    Load JSON campaign data and convert to DataFrame
-    """
+
+    #Load JSON campaign data and convert to DataFrame
     try:
         with open(file_path, 'r') as file:
             data = json.load(file)
