@@ -8,13 +8,9 @@ from starlette.responses import RedirectResponse
 from app_home import app_home
 from app_fblogin import app_fblogin
 from app_aboutus import app_aboutus
-from app_login import app_login
+from app_callback import app_callback
 from app_report import app_report
 
-
-# Make App instance from your pages
-#page_charts = app_fblogin
-#page_about = app_aboutus
 
 async def redirect_to_home(request):
     return RedirectResponse(url="/home")
@@ -25,7 +21,7 @@ routes = [
     Mount("/home", app_home, name="Home"),    
     Mount("/fb-login", app=app_fblogin),
     Mount("/aboutus", app=app_aboutus),
-    Mount("/login", app_login),
+    Mount("/callback", app_callback),
     Mount("/report", app=app_report)
 ]
 
