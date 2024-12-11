@@ -3,8 +3,7 @@ import urllib.parse
 
 # Facebook OAuth details
 FACEBOOK_CLIENT_ID = '2087135655067065'
-#FACEBOOK_CLIENT_ID = '897368955878991'
-REDIRECT_URI = 'http://localhost:8000/login'
+REDIRECT_URI = 'http://localhost:8000/callback'
 
 # Facebook OAuth URLs
 AUTHORIZATION_URL = 'https://www.facebook.com/v21.0/dialog/oauth'

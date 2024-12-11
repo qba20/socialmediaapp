@@ -5,19 +5,16 @@ import shiny
 import fbdatamodule
 
 # Facebook OAuth details
-#FACEBOOK_CLIENT_ID = '1620231431897488'
 FACEBOOK_CLIENT_ID = '2087135655067065'
 
-#FACEBOOK_CLIENT_SECRET = 'df9ebeb23dfb620a2e71dda8c3247fd9'
 FACEBOOK_CLIENT_SECRET = '588767d6d1b7b6bcb6c09704c61e6fc3'
 
-REDIRECT_URI = 'http://localhost:8000/login'
+REDIRECT_URI = 'http://localhost:8000/callback'
 
 # Facebook OAuth URLs
 AUTHORIZATION_URL = 'https://www.facebook.com/v21.0/dialog/oauth'
 TOKEN_URL = 'https://graph.facebook.com/v21.0/oauth/access_token'
 USER_INFO_URL = 'https://graph.facebook.com/v21.0/me'
-
 
 # Define the UI
 app_ui = ui.page_fluid(
@@ -67,10 +64,7 @@ def server(input, output, session):
             token_data = token_response.json()
  
             access_token = token_data.get("access_token")
-            #print(access_token)
             if not access_token:
-                #print("Error: Could not retrieve access token!")
-                #output["output"].set_value("Error: Could not retrieve access token!")
                 @render.text
                 def output():
                     return "Error: Could not retrieve access token!"
@@ -86,11 +80,9 @@ def server(input, output, session):
             )
             user_info_response.raise_for_status()
             user_info = user_info_response.json()
-            #print(user_info)
             fbdatamodule.fbapidata = user_info
             
             # Display user info
-            #output["output"].set_value(f"Logged in as: {user_info}")
             @render.text
             def output():
                 return f"Logged in as: {user_info}"
@@ -98,8 +90,6 @@ def server(input, output, session):
             def status():
                 return 'Login succeeded! Please go to Reports page.'
         except requests.exceptions.RequestException as e:
-            #print(e)
-            #output["output"].set_value(f"An error occurred: {str(e)}")
             @render.text
             def output():
                 return f"An error occurred: {str(e.strerror)}"
@@ -107,10 +97,8 @@ def server(input, output, session):
             def status():
                 return 'Error Occurred!'
  
-
 # Create the Shiny app
 app_callback = App(app_ui, server)
-
 
 
 '''
