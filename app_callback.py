@@ -20,6 +20,7 @@ USER_INFO_URL = 'https://graph.facebook.com/v21.0/me'
 
 # Define the UI
 app_ui = ui.page_fluid(
+    ui.panel_title(title="Authentication", window_title=None),
     ui.br(),ui.br(),
     ui.output_text('status'),
     ui.br(),ui.br(),

@@ -440,15 +440,12 @@ def server(input, output, session):
 # Define the UI for the Shiny app
 # Updated UI for the Shiny app
 app_ui = ui.page_fluid(
-
+ 
     ui.panel_title(title="Government of Kuwait - Social Media Dashboard", window_title="Social Media Dashboard"),
     ui.tags.br(),
-
     ui.tags.h5('FB Data'),
     ui.output_text('fbdata'),
-
     ui.tags.br(),
-
     ui.tags.h1("Campaign Analysis Dashboard", class_="text-center my-4"),
     ui.row(
         ui.column(6,

@@ -2,7 +2,7 @@ from shiny import App, ui
 
 # Define the UI
 app_ui = ui.page_fluid(
-        ui.h4("Home Page"),
+        ui.panel_title(title="Home", window_title="Home Page"),
         ui.tags.br(),
         ui.h1("Govertment of Kuwait - Social Media Dashboard"),
         ui.tags.br(),       
