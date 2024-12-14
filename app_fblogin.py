@@ -10,6 +10,7 @@ AUTHORIZATION_URL = 'https://www.facebook.com/v21.0/dialog/oauth'
 
 # Define the UI
 app_ui = ui.page_fluid(
+    ui.panel_title(title="Facebook Login", window_title="Facebook Login"),
     ui.tags.script("""
         // On page load, check if there is a 'code' parameter in the URL
         document.addEventListener('DOMContentLoaded', function () {
