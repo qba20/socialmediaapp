@@ -11,7 +11,6 @@ from app_aboutus import app_aboutus
 from app_callback import app_callback
 from app_report import app_report
 
-
 async def redirect_to_home(request):
     return RedirectResponse(url="/home")
 

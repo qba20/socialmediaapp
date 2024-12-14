@@ -1,6 +1,8 @@
 from shiny import App, ui, reactive, render
 import requests
 import urllib.parse
+from starlette.responses import RedirectResponse
+
 
 import fbdatamodule
 
@@ -82,7 +84,13 @@ def server(input, output, session):
             user_info_response.raise_for_status()
             user_info = user_info_response.json()
             fbdatamodule.fbapidata = user_info
-            
+
+
+            print(1)
+            # Redirect to report page once data is fetched from API
+            RedirectResponse(url="/report")
+            print(2)
+
             # Display user info
             @render.text
             def output():
