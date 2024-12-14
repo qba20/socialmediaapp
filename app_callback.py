@@ -85,11 +85,8 @@ def server(input, output, session):
             user_info = user_info_response.json()
             fbdatamodule.fbapidata = user_info
 
-
-            print(1)
             # Redirect to report page once data is fetched from API
-            RedirectResponse(url="/report")
-            print(2)
+            # RedirectResponse(url="/report")
 
             # Display user info
             @render.text
