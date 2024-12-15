@@ -7,10 +7,9 @@ import app_values
 # Define the UI
 app_ui = ui.page_fluid(
     ui.panel_title(title="Authentication", window_title=None),
-    ui.br(),ui.br(),
+    ui.br(),
     ui.output_text('status'),
-    ui.br(),ui.br(),
-
+    ui.br(),
     ui.row(
         ui.column(2,
             ui.tags.a( "Go to Reports",href="../report",class_="btn btn-primary"),

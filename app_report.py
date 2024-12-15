@@ -524,7 +524,6 @@ app_ui = ui.page_fluid(
 )
 
 
-
 # Create the Shiny app
 app_report = App(app_ui, server)
  
