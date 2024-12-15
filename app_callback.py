@@ -2,21 +2,7 @@ from shiny import App, ui, reactive, render
 import requests
 import urllib.parse
 from starlette.responses import RedirectResponse
-
-
-import fbdatamodule
-
-# Facebook OAuth details
-FACEBOOK_CLIENT_ID = '2087135655067065'
-
-FACEBOOK_CLIENT_SECRET = '588767d6d1b7b6bcb6c09704c61e6fc3'
-
-REDIRECT_URI = 'http://localhost:8000/callback'
-
-# Facebook OAuth URLs
-AUTHORIZATION_URL = 'https://www.facebook.com/v21.0/dialog/oauth'
-TOKEN_URL = 'https://graph.facebook.com/v21.0/oauth/access_token'
-USER_INFO_URL = 'https://graph.facebook.com/v21.0/me'
+import app_values
 
 # Define the UI
 app_ui = ui.page_fluid(
@@ -29,7 +15,6 @@ app_ui = ui.page_fluid(
     ui.br(),ui.br(),
     ui.output_text_verbatim("output",placeholder=True)
 )
-
 
 # Server logic
 def server(input, output, session):
@@ -56,11 +41,11 @@ def server(input, output, session):
         try:
             # Exchange the authorization code for an access token
             token_response = requests.get(
-                TOKEN_URL,
+                app_values.TOKEN_URL,
                 params={
-                    "client_id": FACEBOOK_CLIENT_ID,
-                    "redirect_uri": REDIRECT_URI,
-                    "client_secret": FACEBOOK_CLIENT_SECRET,
+                    "client_id": app_values.FACEBOOK_CLIENT_ID,
+                    "redirect_uri": app_values.REDIRECT_URI,
+                    "client_secret": app_values.FACEBOOK_CLIENT_SECRET,
                     "code": code,
                 },
             )
@@ -79,12 +64,12 @@ def server(input, output, session):
  
             # Retrieve user info
             user_info_response = requests.get(
-                USER_INFO_URL,
+                app_values.USER_INFO_URL,
                 params={"fields": "id,name,adaccounts", "access_token": access_token},
             )
             user_info_response.raise_for_status()
             user_info = user_info_response.json()
-            fbdatamodule.fbapidata = user_info
+            app_values.fbapidata = user_info
 
             # Redirect to report page once data is fetched from API
             # RedirectResponse(url="/report")

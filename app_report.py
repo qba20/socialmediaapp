@@ -3,8 +3,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 from shiny import App, render, ui, reactive
-
-import fbdatamodule
+import app_values
 
 def load_json_data(file_path):
 
@@ -41,20 +40,13 @@ def load_json_data(file_path):
         print(f"Error loading JSON: {e}")
         return pd.DataFrame()
 
-# Define the file path directly
-JSON_FILE_PATH = r"D:\campaign_data.json" 
-
 def server(input, output, session):
-
-
     @render.text
     def fbdata():
-        return fbdatamodule.fbapidata
-
+        return app_values.fbapidata
 
     # Load data when the app starts
-    campaign_data = reactive.Value(load_json_data(JSON_FILE_PATH))
-
+    campaign_data = reactive.Value(load_json_data(app_values.JSON_FILE_PATH))
 
     # Output for average metrics
     @output

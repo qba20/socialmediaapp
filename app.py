@@ -3,7 +3,6 @@ from starlette.applications import Starlette
 from starlette.routing import Mount, Route
 from starlette.responses import RedirectResponse
 
-
 # Our pages
 from app_home import app_home
 from app_fblogin import app_fblogin

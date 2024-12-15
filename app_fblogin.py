@@ -1,12 +1,6 @@
 from shiny import App, ui
 import urllib.parse
-
-# Facebook OAuth details
-FACEBOOK_CLIENT_ID = '2087135655067065'
-REDIRECT_URI = 'http://localhost:8000/callback'
-
-# Facebook OAuth URLs
-AUTHORIZATION_URL = 'https://www.facebook.com/v21.0/dialog/oauth'
+import app_values
 
 # Define the UI
 app_ui = ui.page_fluid(
@@ -27,7 +21,7 @@ app_ui = ui.page_fluid(
     ui.tags.a( "Home",href="../",class_="btn btn-primary"),
     ui.tags.a(
         "Login with Facebook",
-        href=f"{AUTHORIZATION_URL}?client_id={FACEBOOK_CLIENT_ID}&redirect_uri={urllib.parse.quote(REDIRECT_URI)}&scope=email,public_profile,ads_read",
+        href=f"{app_values.AUTHORIZATION_URL}?client_id={app_values.FACEBOOK_CLIENT_ID}&redirect_uri={urllib.parse.quote(app_values.REDIRECT_URI)}&scope=email,public_profile,ads_read",
         class_="btn btn-primary"
     ),
 )
