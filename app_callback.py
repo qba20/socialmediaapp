@@ -1,7 +1,7 @@
 from shiny import App, ui, reactive, render
 import requests
 import urllib.parse
-from starlette.responses import RedirectResponse
+# from starlette.responses import RedirectResponse
 import app_values
 
 # Define the UI
@@ -10,8 +10,18 @@ app_ui = ui.page_fluid(
     ui.br(),ui.br(),
     ui.output_text('status'),
     ui.br(),ui.br(),
-    ui.tags.a( "Go to Reports",href="../report",class_="btn btn-primary"),
-    ui.tags.a( "Home",href="../",class_="btn btn-primary"),
+
+    ui.row(
+        ui.column(2,
+            ui.tags.a( "Go to Reports",href="../report",class_="btn btn-primary"),
+        ),
+        ui.column(2,
+            ui.tags.a( "Home",href="../",class_="btn btn-primary"),
+        ),
+        ui.column(2,
+            ui.tags.a("About us",href="../aboutus",class_="btn btn-primary")
+        )
+    ),
     ui.br(),ui.br(),
     ui.output_text_verbatim("output",placeholder=True)
 )

@@ -7,9 +7,9 @@ FACEBOOK_CLIENT_SECRET = '588767d6d1b7b6bcb6c09704c61e6fc3'
 REDIRECT_URI = 'http://localhost:8000/callback'
 
 # Facebook OAuth URLs
-AUTHORIZATION_URL = f'https://www.facebook.com/v{FACEBOOK_API_VER}.0/dialog/oauth'
-TOKEN_URL = f'https://graph.facebook.com/v{FACEBOOK_API_VER}.0/oauth/access_token'
-USER_INFO_URL = f'https://graph.facebook.com/v{FACEBOOK_API_VER}.0/me'
+AUTHORIZATION_URL = f'https://www.facebook.com/v{FACEBOOK_API_VER}/dialog/oauth'
+TOKEN_URL = f'https://graph.facebook.com/v{FACEBOOK_API_VER}/oauth/access_token'
+USER_INFO_URL = f'https://graph.facebook.com/v{FACEBOOK_API_VER}/me'
 
 # Define the file path directly
 JSON_FILE_PATH = r"D:\campaign_data.json"
