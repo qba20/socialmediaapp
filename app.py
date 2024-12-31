@@ -8,6 +8,7 @@ from app_home import app_home
 from app_aboutus import app_aboutus
 from app_callback import app_callback
 from app_report import app_report
+from app_g_callback import app_g_callback
 
 async def redirect_to_home(request):
     return RedirectResponse(url="/home")
@@ -18,6 +19,7 @@ routes = [
     Mount("/home", app_home, name="Home"),
     Mount("/aboutus", app=app_aboutus),
     Mount("/callback", app_callback),
+    Mount("/gcallback", app_g_callback),    
     Mount("/report", app=app_report)
 ]
 

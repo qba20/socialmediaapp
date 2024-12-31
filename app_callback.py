@@ -48,6 +48,7 @@ def server(input, output, session):
             return
         
         try:
+
             # Exchange the authorization code for an access token
             token_response = requests.get(
                 app_values.TOKEN_URL,
