@@ -4,6 +4,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 from shiny import App, render, ui, reactive
 import app_values
+from pathlib import Path
 
 def load_json_data(file_path):
 
@@ -41,12 +42,20 @@ def load_json_data(file_path):
         return pd.DataFrame()
 
 def server(input, output, session):
-    @render.text
-    def fbdata():
-        return app_values.fbapidata
+    # @render.text
+    # def fbdata():
+    #     return app_values.fbapidata
 
     # Load data when the app starts
     campaign_data = reactive.Value(load_json_data(app_values.JSON_FILE_PATH))
+
+
+    @render.image
+    def qbaLogo():
+        currentdir = Path(__file__).parent
+        img = {"src": currentdir / 'QBA_Logo.png',"width":'80%'}
+        return img
+    
 
     # Output for average metrics
     @output
@@ -431,13 +440,22 @@ def server(input, output, session):
             return df_summary
 # Define the UI for the Shiny app
 # Updated UI for the Shiny app
-app_ui = ui.page_fluid(
- 
-    ui.panel_title(title="Government of Kuwait - Social Media Dashboard", window_title="Social Media Dashboard"),
-    ui.tags.br(),
-    ui.tags.h5('FB Data'),
-    ui.output_text('fbdata'),
-    ui.tags.br(),
+app_ui = ui.page_sidebar(
+    ui.sidebar(
+        ui.output_image('qbaLogo'),
+        ui.input_slider("n", "Slider", min=0, max=100, value=20),
+        bg="#f1f1f1", open="open"
+    ),
+
+#ui.page_fluid(
+    ui.div(
+    ui.h1("Government of Kuwait - Social Media Dashboard")),
+    ui.output_image('qbaLogo'),
+
+    # ui.panel_title(title="Government of Kuwait - Social Media Dashboard", window_title="Social Media Dashboard"),
+    ui.tags.hr(),
+    # ui.tags.br(),
+    ui.br(),
     ui.tags.h1("Campaign Analysis Dashboard", class_="text-center my-4"),
     ui.row(
         ui.column(6,

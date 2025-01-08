@@ -3,6 +3,7 @@ import requests
 import urllib.parse
 # from starlette.responses import RedirectResponse
 import app_values
+import app_home
 
 # Define the UI
 app_ui = ui.page_fluid(
@@ -103,10 +104,10 @@ def server(input, output, session):
 app_callback = App(app_ui, server)
 
 
-'''
+
 if __name__ == "__main__":
     from shiny import run_app
  
     # Run the Shiny app on localhost
-    run_app(app_fblogin, port=8000, host="127.0.0.1")
-'''
+    run_app(app_home.app_home, port=8000, host="127.0.0.1")
+
