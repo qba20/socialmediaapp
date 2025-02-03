@@ -4,8 +4,8 @@ import urllib.parse
 FACEBOOK_API_VER = 21.0
 
 # Facebook OAuth details
-FACEBOOK_CLIENT_ID = "2087135655067065"
-FACEBOOK_CLIENT_SECRET = "588767d6d1b7b6bcb6c09704c61e6fc3"
+FACEBOOK_CLIENT_ID = "208XXXXXXXXXXXXXX065"
+FACEBOOK_CLIENT_SECRET = "5887xxxxxxxxxxxxxxxxxxxx6fc3"
 REDIRECT_URI = "http://localhost:8000/callback"
 
 # Facebook OAuth URLs
@@ -16,10 +16,10 @@ USER_INFO_URL = f"https://graph.facebook.com/v{FACEBOOK_API_VER}/me"
 
 GOOGLE_AUTHORIZATION_URL = f"https://accounts.google.com/o/oauth2/auth"
 GOOGLE_CLIENT_ID = (
-    "1036207747478-o2qdrm7lco3eg54novr5u8ri71i82dh4.apps.googleusercontent.com"
+    "1036xxxxxxxxxxxxxxxxxxxxxxxx82dh4.apps.googleusercontent.com"
 )
-GOOGLE_CLIENT_SECRET = "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"
-GOOGLE_DEVELOPER_TOKEN = "Y_H8ik_J_cwcxmibrT_Yzw"
+GOOGLE_CLIENT_SECRET = "GOCxxxxxxxxxxxxxxxxxxXVj"
+GOOGLE_DEVELOPER_TOKEN = "Y_xxxxxxxxxxxxxzw"
 GOOGLE_API_SCOPE = "https://www.googleapis.com/auth/adwords"
 GOOGLE_REDIRECT_URI = "http://localhost:8000/gcallback"
 
